@@ -18,13 +18,19 @@ public class UserController {
 		this.userRepository=userRepository;
 	}
 	
+	
+	@RequestMapping("/showRegistration")
+	public String showregistration() {
+		return "/registerUser";
+	}
+	
 	@RequestMapping(value = "/registerUser", method = RequestMethod.POST)
 	public String register(@ModelAttribute("user")UserEntity user) {
 
 		user.setUserID("1");
 		userRepository.save(user);
 		
-		return "login/login"; 
+		return "/login"; 
 	}
 	
 	
